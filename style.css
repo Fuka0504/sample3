@@ -1,0 +1,1360 @@
+@charset "UTF-8";
+
+
+body {
+  letter-spacing: 0.1em;
+  color: #52514c;
+  font-family: "Noto Serif JP", serif;
+}
+
+a {
+  display: inline-block;
+  text-decoration: none;
+  color: #52514c;
+  font-family: "Noto Serif JP", serif;
+}
+
+li {
+  list-style: none;
+  color: #52514c;
+}
+
+img {
+  max-width: 100%;
+  object-fit: cover;
+  vertical-align: bottom;
+}
+
+.pc {
+  display: block;
+}
+
+.sp {
+  display: none;
+}
+
+.fadein {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 2s;
+}
+
+#news-body {
+  display: none;
+}
+
+#menu-body {
+  display: none;
+}
+
+#access-body {
+  display: none;
+}
+
+
+
+/*-----------------------------------------------------------
+  共通パーツ
+-----------------------------------------------------------*/
+.wrapper {
+  max-width: 1000px;
+  margin-inline: auto;
+}
+
+.section-title {
+  font-size: 40px;
+  color: #8A6C73;
+  font-family: "Noto Serif", serif;
+  font-weight: 400;
+  margin-bottom: 72px;
+}
+
+
+.Btn {
+  border: 1px solid #8A6C73;
+  margin: 0 auto;
+  position: relative;
+  width: 240px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  letter-spacing: 0.05em;
+  background: #fff;
+  border-radius: 50px;
+  font-size: 12px;
+  /* transition: initial; */
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.Btn-Text {
+  color: #8A6C73;
+  font-weight: bold;
+  z-index: 10;
+  letter-spacing: 0.1em;
+  transition: 0.6s ease all;
+}
+
+.Btn:hover .Btn-Text {
+  color: #fff;
+  transition: 0.6s ease all;
+}
+
+.Btn:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: 50%;
+  margin: auto;
+  width: 60px;
+  height: 60px;
+  background: #8A6C73;
+  transform: scale(0);
+  transition: 0.6s ease all;
+}
+
+.Btn:hover:before {
+  transform: scale(4.2);
+}
+
+/*-----------------------------------------------------------
+  header 
+-----------------------------------------------------------*/
+.site-title {
+  font-family: "Playfair Display", serif;
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  z-index: 20;
+}
+
+.site-title a {
+  color: #fff;
+}
+
+
+/*-----------------------------------------------------------
+  ハンバーガーメニュー
+-----------------------------------------------------------*/
+.toggle_btn {
+  width: 65px;
+  height: 65px;
+  background-color: #F6F3F5;
+  border-radius: 50px;
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 30;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.toggle_btn:hover {
+  transform: scale(1.1);
+}
+
+.toggle_btn span {
+  width: 35%;
+  height: 1px;
+  background-color: #8A6C73;
+  position: absolute;
+  left: 32%;
+  transition: 0.5s;
+}
+
+.toggle_btn span:nth-child(1) {
+  top: 40%;
+}
+
+.toggle_btn span:nth-child(2) {
+  top: 50%;
+  width: 18px;
+}
+
+.toggle_btn span:nth-child(3) {
+  top: 60%;
+}
+
+.open .toggle_btn {
+  background-color: #fff;
+}
+
+.open .toggle_btn span:nth-child(1) {
+  top: 50%;
+  background-color: #8A6C73;
+  transform: rotate(-45deg);
+}
+
+.open .toggle_btn span:nth-child(2) {
+  opacity: 0;
+}
+
+.open .toggle_btn span:nth-child(3) {
+  top: 50%;
+  background-color: #8A6C73;
+  transform: rotate(45deg);
+}
+
+#navi {
+  width: 100%;
+  height: 100vh;
+  background-color: #F6F3F5;
+  color: #8A6C73;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 20;
+  transition: all 0.6s ease;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.open #navi {
+  opacity: 1;
+  visibility: visible;
+}
+
+#navi .menu {
+  margin: 130px 0 40px;
+}
+
+#navi .menu li {
+  margin-bottom: 32px;
+  text-align: center;
+  font-size: 16px;
+}
+
+#navi .menu a {
+  transition: .25s ease;
+}
+
+#navi .menu a:hover {
+  color: #8A6C73;
+}
+
+
+/*-----------------------------------------------------------
+  mainvisual
+-----------------------------------------------------------*/
+#top .mainvisual {
+  height: 100vh;
+  position: relative;
+}
+
+#top .mainvisual .fade li {
+  width: 100%;
+  overflow: hidden;
+  top: 0;
+  right: 0;
+  opacity: 0;
+  animation: fade 24s ease infinite;
+}
+
+#top .mainvisual .fade li:nth-child(1) {
+  animation-delay: 0s;
+}
+
+#top .mainvisual .fade li:nth-child(2) {
+  animation-delay: 8s;
+}
+
+#top .mainvisual .fade li:nth-child(3) {
+  animation-delay: 16s;
+}
+
+#top .mainvisual .fade li img {
+  height: 100vh;
+  width: 100%;
+  position: absolute;
+  object-fit: cover;
+  object-position: top center;
+  z-index: -10;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0
+  }
+
+  16% {
+    opacity: 1
+  }
+
+  33% {
+    opacity: 1
+  }
+
+  49% {
+    opacity: 0
+  }
+
+  100% {
+    opacity: 0
+  }
+}
+
+
+/*-----------------------------------------------------------
+  concept
+-----------------------------------------------------------*/
+#concept {
+  padding: 140px 40px;
+}
+
+#concept .section-title {
+  text-align: center;
+}
+
+#concept p {
+  text-align: center;
+  line-height: 2.5;
+  font-size: 20px;
+}
+
+
+/*-----------------------------------------------------------
+  news
+-----------------------------------------------------------*/
+#top #top-news {
+  padding: 140px 40px;
+  background-color: #FBF9FA;
+}
+
+#top #top-news .top-news-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 72px;
+}
+
+#top #top-news .top-news-list li {
+  width: 100%;
+}
+
+#top #top-news .top-news-list li img {
+  width: 300px;
+  height: 200px;
+  margin-bottom: 20px;
+}
+
+#top #top-news .date {
+  font-size: 13px;
+  margin-bottom: 5px;
+}
+
+#top #top-news .Btn {
+  background: #FBF9FA;
+}
+
+
+/*-----------------------------------------------------------
+  menu
+-----------------------------------------------------------*/
+#top #top-menu {
+  padding: 140px 40px;
+}
+
+#top #top-menu .menu-item {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 72px;
+}
+
+#top #top-menu .menu-item .item-title {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 24px;
+  color: #8A6C73;
+}
+
+#top #top-menu li {
+  width: 40%;
+}
+
+#top #top-menu dl {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#top #top-menu dl dt {
+  width: 60%;
+  border-bottom: 1px solid #F0F0F0;
+  padding: 20px 0 20px 20px;
+}
+
+#top #top-menu dl dd {
+  width: 40%;
+  text-align: end;
+  border-bottom: 1px solid #F0F0F0;
+  padding: 20px 20px 20px 0;
+}
+
+#top #top-menu dl dd:first-child {
+  padding-top: 0;
+}
+
+#top #top-menu dl span {
+  font-size: 13px;
+  margin-right: 3px;
+}
+
+
+/*-----------------------------------------------------------
+  photo
+-----------------------------------------------------------*/
+#photo {
+  padding-bottom: 140px;
+}
+
+/*-------------------------------
+  photo 一列目
+--------------------------------*/
+#photo .scroll-content {
+  display: flex;
+  overflow: hidden;
+  gap: 5px;
+}
+
+#photo .item li {
+  width: 250px;
+}
+
+#photo .item li img {
+  width: 250px;
+  height: 250px;
+  object-position: top center;
+}
+
+#photo .item {
+  display: flex;
+  gap: 5px;
+  animation: loopAnimation 30s linear infinite;
+}
+
+@keyframes loopAnimation {
+  0% {
+    transform: translate(0%);
+  }
+
+  100% {
+    transform: translate(-100%);
+  }
+}
+
+
+/*-------------------------------
+  photo 二列目
+--------------------------------*/
+#photo .scroll-content-right {
+  display: flex;
+  overflow: hidden;
+  gap: 5px;
+  margin-top: 5px;
+}
+
+#photo .item-right {
+  display: flex;
+}
+
+#photo .item-right li {
+  width: 250px;
+}
+
+#photo .item-right li img {
+  width: 250px;
+  height: 250px;
+  object-position: top center;
+}
+
+#photo .item-right {
+  display: flex;
+  gap: 5px;
+  animation: loopAnimation2 30s linear infinite;
+}
+
+@keyframes loopAnimation2 {
+  0% {
+    transform: translate(-100%);
+  }
+
+  100% {
+    transform: translate(0%);
+  }
+}
+
+/*-----------------------------------------------------------
+  access
+-----------------------------------------------------------*/
+#top #top-access {
+  background-image: url(img/access.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  padding: 140px 40px;
+}
+
+#top #top-access p {
+  padding-bottom: 16px;
+}
+
+#top #top-access p:last-of-type {
+  padding-bottom: 0;
+}
+
+#top #top-access p span {
+  margin-left: 16px;
+}
+
+#top #top-access .Btn {
+  background: none;
+  margin-top: 72px;
+  margin-left: 0;
+}
+
+
+/*-----------------------------------------------------------
+  footer
+-----------------------------------------------------------*/
+footer {
+  padding: 100px 40px;
+  background-color: #FBF9FA;
+}
+
+footer .footer-logo {
+  font-size: 32px;
+  font-family: "Playfair Display", serif;
+}
+
+footer .footer-logo a {
+  color: #8A6C73;
+}
+
+footer .navi-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 72px;
+}
+
+footer ul {
+  display: flex;
+}
+
+footer ul li {
+  margin-left: 40px;
+}
+
+footer ul li a {
+  transition: 0.25s ease;
+}
+
+footer ul li a:hover {
+  color: #8A6C73;
+}
+
+footer .copy-right {
+  font-size: 10px;
+}
+
+
+/*--------------------------------
+  トップへ戻るボタン
+--------------------------------*/
+.to-top {
+  width: 48px;
+  height: 48px;
+  background-color: #fff;
+  border-radius: 50px;
+  border: 1px solid #F6F3F5;
+  position: fixed;
+  right: 32px;
+  bottom: 310px;
+}
+
+.to-top::after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border: 0;
+  border-top: solid 1px #8A6C73;
+  border-right: solid 1px #8A6C73;
+  transform: rotate(-45deg);
+  position: absolute;
+  top: 20px;
+  left: 18px;
+}
+
+
+/*-----------------------------------------------------------
+  news下層
+-----------------------------------------------------------*/
+.site-title-news {
+  font-family: "Playfair Display", serif;
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  z-index: 20;
+}
+
+.site-title-news a {
+  color: #8A6C73;
+}
+
+#nav ul {
+  display: flex;
+  justify-content: flex-end;
+  padding: 48px 130px 0 0;
+}
+
+#nav li {
+  margin-left: 40px;
+}
+
+#nav li a {
+  transition: 0.5s;
+}
+
+#nav li a:hover {
+  color: #8A6C73;
+}
+
+#news-body {
+  background-color: #FBF9FA;
+}
+
+
+/*----------------------------
+  news下層 main
+----------------------------*/
+#news {
+  padding: 140px 40px 0 40px;
+}
+
+#news .news-list {
+  margin-bottom: 72px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+#news .news-list li {
+  width: 30%;
+  margin-bottom: 40px;
+}
+
+#news .news-list li img {
+  width: 300px;
+  height: 200px;
+}
+
+#news .news-text {
+  padding-top: 20px;
+}
+
+#news .date {
+  font-size: 13px;
+}
+
+
+/*----------------------------
+  news下層 ページネンション
+----------------------------*/
+#news .pagination {
+  margin-bottom: 140px;
+}
+
+#news .namber {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+#news .namber li {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #8A6C73;
+  border-radius: 50px;
+  font-size: 16px;
+  color: #fff;
+  text-align: center;
+  padding: 6px 0 0 2px;
+}
+
+#news .namber li a {
+  transition: all 0.5s ease;
+  color: #8A6C73;
+}
+
+#news .current {
+  background-color: #8A6C73;
+}
+
+#news .current li {
+  color: #fff;
+}
+
+#news-body footer {
+  border-top: 1px solid #F0F0F0;
+}
+
+#news-body footer {
+  background-color: #FBF9FA;
+}
+
+
+
+/*-----------------------------------------------------------
+  menu下層
+-----------------------------------------------------------*/
+.site-title-menu {
+  font-family: "Playfair Display", serif;
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  z-index: 20;
+}
+
+.site-title-menu a {
+  color: #8A6C73;
+}
+
+#nav ul {
+  display: flex;
+  justify-content: flex-end;
+  padding: 48px 130px 0 0;
+}
+
+#nav li {
+  margin-left: 40px;
+}
+
+#nav li a {
+  transition: 0.5s;
+}
+
+#nav li a:hover {
+  color: #8A6C73;
+}
+
+#menu-body {
+  background-color: #FBF9FA;
+}
+
+/*----------------------------
+  menu下層 main
+----------------------------*/
+#menu {
+  padding: 140px 40px 0 40px;
+}
+
+#menu .menu-container {
+  max-width: 750px;
+  margin-inline: auto;
+}
+
+#menu .item {
+  margin-bottom: 100px;
+}
+
+#menu .menu-title {
+  text-align: center;
+  margin-bottom: 40px;
+  color: #8A6C73;
+  font-size: 24px;
+}
+
+#menu dl {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#menu dl dt {
+  width: 60%;
+  border-bottom: 1px solid #F0F0F0;
+  padding: 0 0 20px 20px;
+  margin-bottom: 20px;
+}
+
+#menu dl dd {
+  width: 40%;
+  text-align: end;
+  border-bottom: 1px solid #F0F0F0;
+  padding: 0 20px 0 0;
+  margin-bottom: 20px;
+}
+
+#menu .gold {
+  font-size: 13px;
+}
+
+#menu-body footer {
+  border-top: 1px solid #F0F0F0;
+}
+
+
+/*-----------------------------------------------------------
+  access下層
+-----------------------------------------------------------*/
+.site-title-access {
+  font-family: "Playfair Display", serif;
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  z-index: 20;
+}
+
+.site-title-access a {
+  color: #8A6C73;
+}
+
+#nav ul {
+  display: flex;
+  justify-content: flex-end;
+  padding: 48px 130px 0 0;
+}
+
+#nav li {
+  margin-left: 40px;
+}
+
+#nav li a {
+  transition: 0.5s;
+}
+
+#nav li a:hover {
+  color: #8A6C73;
+}
+
+#access-body {
+  background-color: #FBF9FA;
+}
+
+
+/*----------------------------
+  access下層 main
+----------------------------*/
+#access {
+  padding: 140px 40px 0 40px;
+}
+
+#access .access-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 140px;
+}
+
+#access .form {
+  max-width: 450px;
+}
+
+#access dl {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#access dt {
+  width: 30%;
+  border-bottom: 1px solid #F0F0F0;
+  padding: 0 0 20px 20px;
+  margin-bottom: 20px;
+}
+
+#access dd {
+  width: 70%;
+  border-bottom: 1px solid #F0F0F0;
+  padding: 0 20px 0 20px;
+  margin-bottom: 20px;
+}
+
+#access .map iframe {
+  width: 450px;
+  height: 400px;
+}
+
+#access-body footer {
+  border-top: 1px solid #F0F0F0;
+}
+
+
+@media (max-width: 1000px) {
+
+  .pc {
+    display: none;
+  }
+
+  .sp {
+    display: block;
+  }
+
+  /*-----------------------------------------------------------
+  共通パーツ
+-----------------------------------------------------------*/
+  .section-title {
+    font-size: 24px;
+    margin-bottom: 48px;
+  }
+
+  .Btn {
+    width: 160px;
+    height: 36px;
+  }
+
+
+  #navi .menu {
+    margin: 150px 72px 40px;
+  }
+
+  #navi .menu li {
+    margin-bottom: 56px;
+    text-align: left;
+    font-size: 24px;
+  }
+
+
+  /*-----------------------------------------------------------
+  header 
+-----------------------------------------------------------*/
+  .site-title {
+    font-family: "Playfair Display", serif;
+    position: absolute;
+    top: 32px;
+    left: 24px;
+    z-index: 20;
+    font-size: 24px;
+  }
+
+  /*-----------------------------------------------------------
+  ハンバーガーメニュー
+-----------------------------------------------------------*/
+  .toggle_btn {
+    width: 60px;
+    height: 60px;
+    background-color: #F6F3F5;
+    border-radius: 50px;
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 30;
+    cursor: pointer;
+    transition: 0.5s;
+  }
+
+
+
+
+  /*-----------------------------------------------------------
+  mv
+-----------------------------------------------------------*/
+  #top .mainvisual {
+    height: 100vh;
+    position: relative;
+  }
+
+  #top .mainvisual .fade li {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  #top .mainvisual .fade li img {
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    object-fit: cover;
+    object-position: top center;
+    z-index: -10;
+  }
+
+
+
+  /*-----------------------------------------------------------
+  concept
+-----------------------------------------------------------*/
+  #concept {
+    padding: 80px 24px;
+  }
+
+  #concept p {
+    font-size: 16px;
+  }
+
+  /*-----------------------------------------------------------
+  news
+-----------------------------------------------------------*/
+  #top #top-news {
+    padding: 80px 24px;
+  }
+
+  #top #top-news .top-news-list {
+    flex-direction: column;
+    margin-bottom: 48px;
+  }
+
+  #top #top-news .top-news-list li {
+    width: 100%;
+    margin-bottom: 32px;
+  }
+
+  #top #top-news .top-news-list li img {
+    margin-bottom: 20px;
+    width: 100%;
+    height: 400px;
+  }
+
+  #top #top-news .date {
+    font-size: 13px;
+    margin-bottom: 0;
+  }
+
+  #top #top-news .Btn {
+    background: #FBF9FA;
+  }
+
+  @media (max-width: 599px) {
+    #top #top-news .top-news-list li img {
+      width: 100%;
+      height: 250px;
+    }
+  }
+
+
+  /*-----------------------------------------------------------
+  menu
+-----------------------------------------------------------*/
+  #top #top-menu {
+    padding: 80px 24px;
+  }
+
+  #top #top-menu .menu-item {
+    flex-direction: column;
+    margin-bottom: 48px;
+  }
+
+  #top #top-menu .menu-item .item-title {
+    margin-bottom: 30px;
+    font-size: 24px;
+  }
+
+  #top #top-menu li {
+    width: 100%;
+    margin-bottom: 40px;
+  }
+
+  #top #top-menu li:last-child {
+    margin-bottom: 0;
+  }
+
+  #top #top-menu dl dt {
+    width: 60%;
+    border-bottom: 1px solid #F0F0F0;
+    padding: 20px 0 20px 0;
+    font-size: 15px;
+  }
+
+  #top #top-menu dl dd {
+    width: 40%;
+    text-align: end;
+    font-size: 15px;
+    border-bottom: 1px solid #F0F0F0;
+    padding: 20px 0 20px 0;
+  }
+
+  #top #top-menu dl span {
+    font-size: 12px;
+  }
+
+
+  /*-----------------------------------------------------------
+  photo
+-----------------------------------------------------------*/
+  #photo {
+    padding-bottom: 80px;
+  }
+
+  /*-------------------------------
+  photo 一列目
+--------------------------------*/
+  #photo .item li {
+    width: 120px;
+  }
+
+  #photo .item li img {
+    width: 120px;
+    height: 120px;
+  }
+
+  /*-------------------------------
+  photo 二列目
+--------------------------------*/
+  #photo .item-right li {
+    width: 120px;
+  }
+
+  #photo .item-right li img {
+    width: 120px;
+    height: 120px;
+  }
+
+
+  /*-----------------------------------------------------------
+  access
+-----------------------------------------------------------*/
+  #top #top-access {
+    background-image: url(img/access-sp.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 80px 24px;
+  }
+
+  #top #top-access p {
+    padding-bottom: 16px;
+    font-size: 14px;
+  }
+
+  #top #top-access p span {
+    margin-left: 16px;
+    font-size: 14px;
+  }
+
+  #top #top-access p span:first-of-type {
+    margin-left: 0;
+  }
+
+  #top #top-access .Btn {
+    background: none;
+    margin-top: 48px;
+    margin-left: 0;
+  }
+
+
+  /*-----------------------------------------------------------
+  footer
+-----------------------------------------------------------*/
+  footer {
+    padding: 56px 24px;
+  }
+
+  footer .footer-logo {
+    font-size: 20px;
+    margin-bottom: 40px;
+  }
+
+  footer .navi-content {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 40px;
+  }
+
+  footer ul {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  footer ul li {
+    margin-right: 40px;
+    margin-left: 0;
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+
+
+  /*--------------------------------
+  トップへ戻るボタン
+--------------------------------*/
+  .to-top {
+    width: 40px;
+    height: 40px;
+    right: 24px;
+    bottom: 235px;
+  }
+
+  .to-top::after {
+    width: 8px;
+    height: 8px;
+    top: 15px;
+    left: 15px;
+  }
+
+
+
+
+  /*-----------------------------------------------------------
+  news下層
+-----------------------------------------------------------*/
+  .site-title-news {
+    font-family: "Playfair Display", serif;
+    position: absolute;
+    top: 32px;
+    left: 24px;
+    z-index: 20;
+    font-size: 24px;
+  }
+
+  #nav {
+    display: none;
+  }
+
+  /*----------------------------
+  news下層 main
+----------------------------*/
+  #news {
+    padding: 130px 24px 0 24px;
+  }
+
+  #news .news-list {
+    margin-bottom: 48px;
+    flex-direction: column;
+  }
+
+  #news .news-list li {
+    width: 100%;
+  }
+
+  #news .news-list li:last-of-type {
+    margin-bottom: 0;
+  }
+
+  #news .news-list a {
+    display: block;
+  }
+
+  #news .news-list li img {
+    width: 100%;
+    height: 400px;
+  }
+
+  @media (max-width: 599px) {
+    #news .news-list li img {
+      width: 100%;
+      height: 250px;
+    }
+  }
+
+
+  /*----------------------------
+  news下層 ページネンション
+----------------------------*/
+  #news .pagination {
+    margin-bottom: 80px;
+  }
+
+
+
+  /*-----------------------------------------------------------
+  menu下層
+-----------------------------------------------------------*/
+  .site-title-menu {
+    top: 32px;
+    font-size: 24px;
+  }
+
+  /*----------------------------
+  menu下層 main
+----------------------------*/
+  #menu {
+    padding: 130px 24px 0 24px;
+  }
+
+  #menu .item {
+    margin-bottom: 48px;
+  }
+
+  #menu .menu-title {
+    font-size: 20px;
+  }
+
+  #menu dl dt {
+    padding: 0 0 20px 0;
+    margin-bottom: 20px;
+    font-size: 13px;
+  }
+
+  #menu dl dt .name-sab {
+    font-size: 11px;
+  }
+
+  #menu dl dd {
+    padding: 0 0 0 0;
+    margin-bottom: 20px;
+    font-size: 13px;
+  }
+
+  #menu .gold {
+    font-size: 11px;
+  }
+
+
+  /*-----------------------------------------------------------
+  access下層
+-----------------------------------------------------------*/
+  .site-title-access {
+    top: 32px;
+    font-size: 24px;
+  }
+
+
+  /*----------------------------
+  access下層 main
+----------------------------*/
+  #access {
+    padding: 130px 24px 0 24px;
+  }
+
+  #access .access-container {
+    flex-direction: column;
+    margin-bottom: 80px;
+    align-items: flex-start;
+  }
+
+  #access dt {
+    padding: 0 0 20px 0;
+    font-size: 13px;
+  }
+
+  #access dd {
+    padding: 0 0 0 20px;
+    font-size: 13px;
+  }
+
+  #access .map {
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  #access .map iframe {
+    width: 100%;
+    height: 400px;
+  }
+
+  #access-body footer {
+    border-top: 1px solid #F0F0F0;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
